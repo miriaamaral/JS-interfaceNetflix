@@ -1,0 +1,114 @@
+// Variáveis
+$vermelho: #e50914;
+$preto: #141414;
+$branco: #fff;
+$link-nav: #AAA;
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+}
+
+// Classes Utilitárias
+.u {
+&-flex { display: flex; }
+&-flex-column { flex-direction: column; }
+&-flex-center { align-items: center; }
+&-flex-justify-center { justify-content: center; 
+    @media screen and (max-width: 700px) { align-items: center; }}
+&-flex-between { justify-content: space-between; }
+&-margin-r-10 { margin-right: 10px; }
+&-margin-r-15 { margin-right: 15px; }
+&-margin-b-40 { margin-bottom: 40px; }
+&-margin-t-10 { margin-top: 10px; }
+
+&-text-red { color: $vermelho; }
+&-font-black { font-family: 'Arial Black', Times; }
+&-font-trebuchet { font-family: 'Trebuchet MS', Arial, sans-serif; }
+&-size-40 { font-size: 40px; }
+
+&-w-70 { width: 70%; }
+&-w-50 { width: 50%; }
+&-max-w-full { width: 100%; }
+
+&-margin-l-5 { margin-left: 5px; }
+&-margin-t-15p { margin-top: 15%; }
+}
+
+.container {
+    margin-left: 20px;
+}
+
+body {
+    background-color: $preto;
+    font-family: 'Arial', sans-serif;
+    color: $branco;
+    margin: 0;
+}
+
+header {
+    .container {
+        @media screen and (max-width: 700px) {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    .logo {
+        color: $vermelho;
+        font-family: 'Arial Black';
+        font-size: 40px;
+    }
+
+    nav {
+        @include flex-center;
+        a {
+            text-decoration: none;
+            color: $link-nav;
+            transition: 0.3s;
+            &:hover { color: $branco; }
+        }
+    }
+}
+
+.filme-principal {
+    height: 400px;
+    background-size: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, .50), rgba(0, 0, 0, .50) 100%), url('../img/capa-house.jpg');
+    
+    .container {
+        @media screen and (max-width: 700px) {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
+.descricao {
+    width: 100%;
+    @media screen and (min-width: 1000px) {
+        width: 50%;
+    }
+}
+
+.botao {
+    background-color: rgba(0,0,0,.50);
+    border: none;
+    color: $branco;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: .3s ease all;
+
+    @media screen and (max-width: 700px) {
+        margin-top: 5px;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    &:hover {
+        background-color: $branco;
+        color: $preto;
+    }
+
+    i { margin-right: 8px; }
+}
